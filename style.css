@@ -1,0 +1,446 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Serif Display', serif;
+}
+
+body{
+    background-color: #6ba0f0;
+    display: flex;
+    justify-content: center;
+}
+
+.pedidoDeCompra {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+    
+
+    background-color: white;
+    width: 100%;
+    max-width: 1000px;
+    border: solid 1px grey;
+    padding: 5px;
+    border-radius: 12px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.795);
+}
+
+.pedidoDeCompra h1 {
+    color: #1a4fa0;
+    font-size: 1.55rem;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.grid-2-campos p {
+    color: #1a4fa0;
+    font-weight: 600;
+    letter-spacing: .04rem;
+    font-size: .78rem;
+}
+
+.form-central{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.form-central hr{
+    width: 100%;
+    background-color: #1a4fa0;
+    height: .05rem;
+    margin: 10px 0px 10px 0px;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ═══════════════════════════════════════
+   style.css — Pedido de Compra Pedro.INC
+═══════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #e8edf5;
+    padding: 40px 16px 60px;
+    color: #111;
+}
+
+/* ── FORMULÁRIO ── */
+.pedidoDeCompra {
+    background: #fff;
+    max-width: 860px;
+    margin: 0 auto 32px;
+    border-radius: 14px;
+    box-shadow: 0 4px 28px rgba(0,0,0,.12);
+    overflow: hidden;
+}
+
+/* Padding lateral uniforme para todos os blocos dentro do card */
+.pedidoDeCompra > .grid-2,
+.form-central {
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+.pedidoDeCompra > .grid-2 {
+    padding-top: 20px;
+    padding-bottom: 4px;
+}
+
+.form-superior {
+    background: #0d1b2a;
+    color: #fff;
+    padding: 28px 36px;
+}
+.form-superior h1 {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+.form-superior p {
+    font-size: .88rem;
+    opacity: .65;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 24px;
+    padding: 20px 0;   /* só vertical; horizontal vem do pai */
+}
+
+.grid-2-campos p,
+.campo label {
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: #556;
+    margin-bottom: 5px;
+}
+
+.grid-2-campos input,
+.campo input,
+.campo textarea {
+    width: 100%;
+    border: 1.5px solid #cdd5e0;
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: .92rem;
+    font-family: inherit;
+    background: #f5f7fb;
+    color: #111;
+    transition: border-color .2s;
+}
+.grid-2-campos input:focus,
+.campo input:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: #1a4fa0;
+    box-shadow: 0 0 0 3px rgba(26,79,160,.1);
+}
+.campo textarea { resize: vertical; min-height: 72px; }
+.span-2 { grid-column: 1 / -1; }
+
+/* Seção central — padding lateral já vem da regra acima */
+.form-central {
+    padding-top: 0;
+    padding-bottom: 28px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.section-label {
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #1a4fa0;
+    border-bottom: 2px solid #1a4fa0;
+    padding-bottom: 5px;
+    margin: 22px 0 12px;
+}
+
+/* Grade de itens — 5 colunas que somam exatamente 100% da largura */
+.item-header,
+.item-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 6px;
+    margin-bottom: 6px;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+.item-header span {
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: #889;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.item-row input {
+    border: 1.5px solid #cdd5e0;
+    border-radius: 7px;
+    padding: 8px 8px;
+    font-size: .88rem;
+    font-family: inherit;
+    background: #f5f7fb;
+    color: #111;
+    transition: border-color .2s;
+    width: 100%;          /* input ocupa exatamente a célula do grid */
+    min-width: 0;         /* impede que o input estoure o grid */
+}
+.item-row input:focus {
+    outline: none;
+    border-color: #1a4fa0;
+}
+
+/* Botões */
+.btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+.btn {
+    padding: 11px 24px;
+    border-radius: 9px;
+    border: none;
+    font-size: .9rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .2s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.15); }
+.btn-gerar { background: #1a4fa0; color: #fff; }
+.btn-pdf   { background: #b03030; color: #fff; }
+.btn-print { background: #0d1b2a; color: #fff; }
+
+
+/* ── RELATÓRIO ── */
+#relatorio {
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+    width: 860px;
+    background: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    color: #111;
+}
+
+/* Quando o JS torna visível */
+#relatorio.visivel {
+    visibility: visible;
+    position: static;
+    left: auto;
+    max-width: 860px;
+    margin: 0 auto;
+    border-radius: 14px;
+    box-shadow: 0 4px 40px rgba(0,0,0,.16);
+    overflow: hidden;
+}
+
+/* Timbrado */
+.rel-header {
+    background: #0d1b2a;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 26px 36px 20px;
+}
+.rel-logo {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -.02em;
+    line-height: 1;
+}
+.rel-logo span { color: #e8a020; }
+.rel-slogan {
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    opacity: .55;
+    margin: 4px 0 10px;
+}
+.rel-dados { font-size: .78rem; opacity: .7; line-height: 1.7; }
+
+.rel-titulo-box {
+    text-align: right;
+}
+.rel-badge {
+    display: inline-block;
+    border: 1.5px solid #e8a020;
+    color: #e8a020;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+}
+.rel-num {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+    color: #fff;
+    letter-spacing: .06em;
+}
+
+/* Metadados */
+.rel-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 2px solid #e0e6ef;
+    background: #f0f4fa;
+}
+.rel-meta-item {
+    padding: 12px 20px;
+    border-right: 1px solid #e0e6ef;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.rel-meta-item:last-child { border-right: none; }
+.meta-lbl {
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: #889;
+}
+.meta-val {
+    font-size: .95rem;
+    font-weight: 600;
+    color: #0d1b2a;
+}
+
+/* Corpo do relatório */
+.rel-body { padding: 24px 36px; }
+
+.rel-section-title {
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #1a4fa0;
+    border-bottom: 2px solid #1a4fa0;
+    padding-bottom: 5px;
+    margin: 20px 0 10px;
+}
+.rel-section-title:first-child { margin-top: 0; }
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .88rem;
+    margin-bottom: 4px;
+}
+thead tr { background: #0d1b2a; color: #fff; }
+thead th {
+    padding: 9px 12px;
+    text-align: left;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+thead th:nth-child(n+3) { text-align: right; }
+tbody tr { border-bottom: 1px solid #e0e6ef; }
+tbody tr:nth-child(even) { background: #f5f8fd; }
+tbody td { padding: 8px 12px; }
+tbody td:nth-child(n+3) { text-align: right; font-family: 'Courier New', monospace; }
+
+tfoot tr { background: #0d1b2a; }
+tfoot td {
+    padding: 10px 12px;
+    color: #fff;
+    font-weight: 700;
+}
+tfoot td:last-child {
+    text-align: right;
+    color: #e8a020;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+}
+
+/* Caixa de observações */
+.obs-box {
+    border: 1.5px solid #cdd5e0;
+    border-radius: 9px;
+    padding: 12px 16px;
+    min-height: 60px;
+    background: #f5f7fb;
+    font-size: .9rem;
+    white-space: pre-wrap;
+    margin-bottom: 4px;
+}
+
+/* Assinaturas */
+.assinaturas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 8px;
+}
+.ass-bloco { text-align: center; }
+.ass-linha {
+    border-top: 1.5px solid #0d1b2a;
+    margin: 56px 20px 8px;
+}
+.ass-nome { font-weight: 700; font-size: .9rem; }
+.ass-cargo { font-size: .78rem; color: #889; margin-top: 2px; }
+
+/* Rodapé */
+.rel-footer {
+    background: #0d1b2a;
+    color: rgba(255,255,255,.4);
+    font-size: .7rem;
+    text-align: center;
+    padding: 10px 36px;
+    letter-spacing: .04em;
+}
+
+/* Impressão */
+@media print {
+    body { background: white; padding: 0; }
+    .pedidoDeCompra { display: none !important; }
+    #relatorio {
+        visibility: visible !important;
+        position: static !important;
+        left: auto !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+}

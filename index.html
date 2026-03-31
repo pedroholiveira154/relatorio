@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════
+         FORMULÁRIO (parte de cima)
+    ═══════════════════════════════════ -->
+    <div class="pedidoDeCompra">
+
+        <!-- PARTE SUPERIOR -->
+        <div class="form-superior">
+            <h1>Emitir Pedido de Compra</h1>
+            <p>Preencha os campos abaixo e clique em "Gerar Relatório"</p>
+        </div>
+
+        <div class="grid-2">
+            <!-- CORREÇÃO: adicionado id="c1" até id="c4" para o JS conseguir ler -->
+            <div class="grid-2-campos">
+                <p>DATA DE EMISSÃO</p>
+                <input type="text" id="c1" placeholder="dd/mm/aaaa">
+            </div>
+            <div class="grid-2-campos">
+                <p>NÚMERO DO PEDIDO</p>
+                <input type="text" id="c2" placeholder="Ex.: PC-2026-001">
+            </div>
+            <div class="grid-2-campos">
+                <p>FORNECEDOR</p>
+                <input type="text" id="c3" placeholder="Nome do fornecedor">
+            </div>
+            <div class="grid-2-campos">
+                <p>CENTRO DE CUSTO</p>
+                <input type="text" id="c4" placeholder="Ex.: TI / Operações">
+            </div>
+        </div>
+
+        <!-- PARTE CENTRAL -->
+        <div class="form-central">
+
+            <div class="section-label">Produtos / Serviços (8 itens)</div>
+
+            <div class="item-header">
+                <span>Descrição</span>
+                <span>Qtd</span>
+                <span>Vlr Unit. R$</span>
+                <span>Total R$</span>
+            </div>
+
+            <div class="item-row">
+                <input id="i1d" placeholder="Item 1">
+                <input id="i1q" placeholder="1" type="number">
+                <input id="i1un" placeholder="UN">
+                <input id="i1t" placeholder="0,00" type="number">
+            </div>
+            <div class="item-row">
+                <input id="i2d" placeholder="Item 2">
+                <input id="i2q" placeholder="1" type="number">
+                <input id="i2un" placeholder="UN">
+                <input id="i2t" placeholder="0,00" type="number">
+            </div>
+            <div class="item-row">
+                <input id="i3d" placeholder="Item 3">
+                <input id="i3q" placeholder="1" type="number">
+                <input id="i3un" placeholder="UN">
+                <input id="i3t" placeholder="0,00" type="number">
+            </div>
+            <div class="item-row">
+                <input id="i4d" placeholder="Item 4">
+                <input id="i4q" placeholder="1" type="number">
+                <input id="i4un" placeholder="UN">
+                <input id="i4t" placeholder="0,00" type="number">
+            </div>
+            <div class="item-row">
+                <input id="i5d" placeholder="Item 5">
+                <input id="i5q" placeholder="1" type="number">
+                <input id="i5un" placeholder="UN">
+                <input id="i5t" placeholder="0,00" type="number">
+            </div>
+            <div class="item-row">
+                <input id="i6d" placeholder="Item 6">
+                <input id="i6q" placeholder="1" type="number">
+                <input id="i6un" placeholder="UN">
+                <input id="i6t" placeholder="0,00" type="number" type="">
+            </div>
+            <div class="item-row">
+                <input id="i7d" placeholder="Item 7">
+                <input id="i7q" placeholder="1" type="number">
+                <input id="i7un" placeholder="UN">
+                <input id="i7t" placeholder="0,00" type="number">
+            </div>
+            <div class="item-row">
+                <input id="i8d" placeholder="Item 8">
+                <input id="i8q" placeholder="1" type="number">
+                <input id="i8un" placeholder="UN">
+                <input id="i8t" placeholder="0,00" type="number">
+            </div>
+
+            <!-- Responsáveis e Observações -->
+            <div class="section-label">Responsáveis &amp; Observações</div>
+
+            <div class="grid-2">
+                <div class="campo">
+                    <label for="c5">Nome do Solicitante</label>
+                    <input type="text" id="c5" placeholder="Nome completo">
+                </div>
+                <div class="campo">
+                    <label for="c6">Cargo do Solicitante</label>
+                    <input type="text" id="c6" placeholder="Ex.: Analista de TI">
+                </div>
+                <div class="campo">
+                    <label for="c7">Nome do Aprovador</label>
+                    <input type="text" id="c7" placeholder="Nome completo">
+                </div>
+                <div class="campo">
+                    <label for="c8">Cargo do Aprovador</label>
+                    <input type="text" id="c8" placeholder="Ex.: Gerente de Compras">
+                </div>
+                <div class="campo span-2">
+                    <label for="cobs">Observações</label>
+                    <textarea id="cobs" placeholder="Condições de pagamento, prazo de entrega..."></textarea>
+                </div>
+            </div>
+
+            <!-- Botões -->
+            <div class="btn-row">
+                <button class="btn btn-gerar" onclick="gerar()"> Gerar Relatório</button>
+                <button class="btn btn-pdf"   onclick="gerar(true)">⬇ Exportar PDF</button>
+                <button class="btn btn-print" onclick="gerar(false, true)"> Imprimir</button>
+            </div>
+
+        </div><!-- /form-central -->
+
+    </div><!-- /pedidoDeCompra -->
+
+
+    <!-- ═══════════════════════════════════
+         RELATÓRIO (parte de baixo)
+         CORREÇÃO: era um segundo formulário,
+         agora é a div de saída com id="relatorio"
+    ═══════════════════════════════════ -->
+    <div id="relatorio">
+
+        <!-- Timbrado -->
+        <div class="rel-header">
+            <div class="rel-empresa">
+                <div class="rel-logo">Pedro<span>.INC</span></div>
+                <div class="rel-slogan">Soluções &amp; Tecnologia</div>
+                <div class="rel-dados">
+                    CNPJ: 00.000.000/0001-00 · contato@pedro.inc<br>
+                    Rua Fictícia, 123 — São Paulo / SP
+                </div>
+            </div>
+            <div class="rel-titulo-box">
+                <div class="rel-badge">Pedido de Compra</div>
+                <div class="rel-num" id="r2">—</div>
+            </div>
+        </div>
+
+        <!-- Metadados -->
+        <div class="rel-meta">
+            <div class="rel-meta-item">
+                <span class="meta-lbl">Data de Emissão</span>
+                <span class="meta-val" id="r1">—</span>
+            </div>
+            <div class="rel-meta-item">
+                <span class="meta-lbl">Fornecedor</span>
+                <span class="meta-val" id="r3">—</span>
+            </div>
+            <div class="rel-meta-item">
+                <span class="meta-lbl">Centro de Custo</span>
+                <span class="meta-val" id="r4">—</span>
+            </div>
+        </div>
+
+        <!-- Tabela de itens -->
+        <div class="rel-body">
+            <div class="rel-section-title">Itens do Pedido</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Descrição</th>
+                        <th>Qtd</th>
+                        <th>Un.</th>
+                        <th>Vlr Unit.</th>
+                        <th>Total (R$)</th>
+                    </tr>
+                </thead>
+                <!-- CORREÇÃO: tbody com id="tabela-itens" que o JS preenche -->
+                <tbody id="tabela-itens">
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">Valor Total do Pedido</td>
+                        <td id="total-geral">R$ 0,00</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <!-- Observações -->
+            <div class="rel-section-title">Observações</div>
+            <div class="obs-box" id="r-obs">—</div>
+
+            <!-- Assinaturas -->
+            <div class="rel-section-title">Assinaturas</div>
+            <div class="assinaturas">
+                <div class="ass-bloco">
+                    <div class="ass-linha"></div>
+                    <!-- CORREÇÃO: id="r5" e "r6" mapeados ao c5 e c6 -->
+                    <div class="ass-nome" id="r5">—</div>
+                    <div class="ass-cargo" id="r6">Solicitante</div>
+                </div>
+                <div class="ass-bloco">
+                    <div class="ass-linha"></div>
+                    <!-- CORREÇÃO: id="r7" e "r8" mapeados ao c7 e c8 -->
+                    <div class="ass-nome" id="r7">—</div>
+                    <div class="ass-cargo" id="r8">Aprovador</div>
+                </div>
+            </div>
+        </div><!-- /rel-body -->
+
+        <!-- Rodapé -->
+        <div class="rel-footer">
+            Pedro.INC © 2026 · Documento interno · Sem validade jurídica
+        </div>
+
+    </div><!-- /relatorio -->
+
+    <script src="script.js"></script>
+</body>
+
+</html>
