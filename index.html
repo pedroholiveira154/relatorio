@@ -23,7 +23,6 @@
         </div>
 
         <div class="grid-2">
-            <!-- CORREÇÃO: adicionado id="c1" até id="c4" para o JS conseguir ler -->
             <div class="grid-2-campos">
                 <p>DATA DE EMISSÃO</p>
                 <input type="text" id="c1" placeholder="dd/mm/aaaa">
@@ -141,11 +140,6 @@
     </div><!-- /pedidoDeCompra -->
 
 
-    <!-- ═══════════════════════════════════
-         RELATÓRIO (parte de baixo)
-         CORREÇÃO: era um segundo formulário,
-         agora é a div de saída com id="relatorio"
-    ═══════════════════════════════════ -->
     <div id="relatorio">
 
         <!-- Timbrado -->
@@ -194,7 +188,7 @@
                         <th>Total (R$)</th>
                     </tr>
                 </thead>
-                <!-- CORREÇÃO: tbody com id="tabela-itens" que o JS preenche -->
+                <!--  tbody com id="tabela-itens" que o JS preenche -->
                 <tbody id="tabela-itens">
                 </tbody>
                 <tfoot>
@@ -214,13 +208,11 @@
             <div class="assinaturas">
                 <div class="ass-bloco">
                     <div class="ass-linha"></div>
-                    <!-- CORREÇÃO: id="r5" e "r6" mapeados ao c5 e c6 -->
                     <div class="ass-nome" id="r5">—</div>
                     <div class="ass-cargo" id="r6">Solicitante</div>
                 </div>
                 <div class="ass-bloco">
                     <div class="ass-linha"></div>
-                    <!-- CORREÇÃO: id="r7" e "r8" mapeados ao c7 e c8 -->
                     <div class="ass-nome" id="r7">—</div>
                     <div class="ass-cargo" id="r8">Aprovador</div>
                 </div>
