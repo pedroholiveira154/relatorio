@@ -52,21 +52,34 @@ function gerar(pdf = false, print = false) {
 
     // 6. PDF ou Impressão
     if (pdf) {
+        relatorio.style.width    = '794px';
+        relatorio.style.maxWidth = '794px';
         html2pdf()
             .set({
-                margin: 0,
-                filename: 'pedido-compra-pedro-inc.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 1, useCORS: true },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                margin:      [0, 0, 0, 0],
+                filename:    'pedido-compra-pedro-inc.pdf',
+                image:       { type: 'jpeg', quality: 0.98 },
+                html2canvas: {
+                    scale:      1.5,        // qualidade sem estourar memória
+                    useCORS:    true,
+                    width:      794,        // captura exatamente a largura A4
+                    windowWidth: 794        // simula viewport de 794px
+                },
+                jsPDF: { unit: 'px', format: [794, 1123], orientation: 'portrait' }
+                //        ↑ px em vez de mm evita conversão que causa corte
             })
             .from(relatorio)
-            .save();
+            .save()
+            .then(() => {
+                // Restaura o tamanho visual após gerar o PDF
+                relatorio.style.width    = '';
+                relatorio.style.maxWidth = '';
+            });
+ 
     } else if (print) {
         window.print();
     }
 }
-
 // ── Pré-preenche data atual e número de pedido aleatório ──
 const hoje = new Date();
 document.getElementById('c1').value = hoje.toLocaleDateString('pt-BR');
