@@ -172,7 +172,6 @@ body {
     visibility: hidden;
     position: absolute;
     left: -9999px;
-    width: 860px;
     background: #fff;
     font-family: 'Segoe UI', sans-serif;
     color: #111;
@@ -183,7 +182,7 @@ body {
     visibility: visible;
     position: static;
     left: auto;
-    max-width: 860px;
+    max-width: 794px; 
     margin: 0 auto;
     border-radius: 14px;
     box-shadow: 0 4px 40px rgba(0,0,0,.16);
